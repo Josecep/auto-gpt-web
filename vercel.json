@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "name": "auto-gpt-web",
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "dist/pwa" }
+      }
+    ],
+    "routes": [
+      { "src": "/_nuxt/.+", "headers": { "cache-control": "s-maxage=31536000" } },
+      { "src": "/([^/]+)$", "dest": "/$1.html" },
+      { "src": "/(.*)", "dest": "/$1" },
+      { "src": "/", "dest": "/index.html" }
+    ],
+    "env": {
+      "DEV": "0"
+    }
+  }
+  
